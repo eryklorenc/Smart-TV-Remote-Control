@@ -16,6 +16,7 @@ class _RemoteScreenState extends State<RemoteScreen> {
 
   @override
   void initState() {
+    connectTV(); // OGÓLNIE PRZY STARCIE APLIKACJI POWINNO BYĆ POŁĄCZENIE
     super.initState();
   }
 
@@ -28,6 +29,7 @@ class _RemoteScreenState extends State<RemoteScreen> {
       log(e.toString());
     }
     log("this is the token to save somewere ${tv.token}");
+    // TUTAJ JUŻ WIEMY ŻE JESTEŚMY POŁĄCZENI
   }
 
   void toggleKeypad() {
