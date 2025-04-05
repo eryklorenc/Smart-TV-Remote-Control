@@ -68,7 +68,7 @@ class SmartTV {
       Map<String, dynamic> data;
       try {
         data = json.decode(message);
-        log ("data $data");
+        log("data $data");
       } catch (e) {
         throw ('Could not parse TV response $message');
       }
@@ -133,9 +133,11 @@ class SmartTV {
     client.quickDiscoverClients().listen((client) async {
       RegExp re = RegExp(r'^.*?Samsung.+UPnP.+SDK\/1\.0$');
 
-      if (!re.hasMatch(client.server!)) {
-        log("Ignoring ${client.server}");
-        return;
+      if (client.server != null) {
+        if (!re.hasMatch(client.server!)) {
+          log("Ignoring ${client.server}");
+          return;
+        }
       }
       try {
         final device = await client.getDevice();
